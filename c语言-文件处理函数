@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE*node;
+	char str[30];
+	char str2[30]; 
+	char str3[]="测试示例！！！！！！！！"; 
+	int f;
+	char u,p;
+  
+  
+	node=fopen("C://Users//鑫鑫//Desktop//test.txt","r+");  //就两个参数，一个文件位置参数及文件名，一个是打开方式参数 
+	//node=freopen("C://Users//鑫鑫//Desktop//test.txt","a+",node);   //多了一个文件指针参数 &&与fopen有区别 
+  
+  
+	for(f=0;f<=15;f++)  //循环处理控制
+	{
+		//fscanf(node,"%6s",str);               //形式跟scanf类似 ，将打开的文件指针或者标准输入流作为第一个参数 
+		//一个汉字两个字节 
+		
+		//fprintf(node,"这是第%2d行\n",f);     //形式跟printf类似 ，输出的参数第一个可以是标准输出也可以是文件指针。 
+		//printf("%s",str);                   //puts函数的输出自带一个换行 
+		
+		//fscanf(stdin,"%c",&p);  //标准输入流的fscanf函数形式 ，将文件指针放在第一个 
+		//fprintf(stdout,"%c",p); //标准输出流的fprintf的函数形式 
+		
+		//fgets(str,60,node); //这个比较难记    //fgets函数中的三个参数缺一个不可 ，将文件指针放在最后一个。  
+		//u=fgetc(node);   //u可以有，可以没有； 
+		//u=getc(node); 	//函数返回一个整数值。
+		
+		//任何函数都是二进制记录的运算 
+		
+		//fputs("我爱中国"，node);   //这三个的函数参数形式一样 ，将文件指针放在最后一个。 
+		//fputc('t',node);
+		//putc('u',node);
+		
+		//fseek(node,sizeof(char)*0,SEEK_SET);  //文件指针作为第一个参数，定位偏移量为第二个参数（可以为负值），第三个参数偏移模式 
+		//SEEK_SET （起始位置） SEEK_CUR （当前位置）   SEEK_END (结尾位置） ！！！！！一定要大写 
+		
+		fwrite(str3,1,strlen(str3),node);  //将str2中的size*100写入到打开的文件中文件中 
+		//fread(str2,12,1,node);  //从打开的文件读出100*size存入到str2中 ,
+		 
+		 
+		 //fread和fwrite的第二三个参数只是提供要操作的字节个数的两个基数。只要积相同 ，位置不影响 
+		 
+		 
+		//rewind(node);                   //重置文件指针位置，一般文件读取是按照顺序读取的 
+		
+		//rename("test.txt","test666.txt");
+	}
+  
+  
+	fclose(node);
+
+
+	return 0;
+ } 
+
+
+
+//fread与fwrite函数的使用代码
+//@小木 2019-01-07
+
+/*#include<stdio.h>
+#include<string.h>
+int main(void)
+{
+    FILE*stream;
+    char msg[]="this is a test";
+    char buf[20];
+    if((stream=fopen("C://Users//鑫鑫//Desktop//test1.txt","w+"))==NULL)
+    {
+        fprintf(stderr,"Can not open output file.\n");
+        return 0;
+    }
+    /*write some data to the file*/
+   // fwrite(msg,1,strlen(msg)+1,stream);
+   			 /*sizeof（char）=1 seek to the beginning of the file*/
+    
+   // fseek(stream,0,SEEK_SET);
+    		/*read the data and display it*/
+   
+    /*fread(buf,strlen(msg)+1,1,stream);
+     printf("%s\n",buf);
+    
+	fclose(stream);
+    return 0;
+}*/
